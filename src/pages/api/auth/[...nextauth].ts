@@ -30,16 +30,16 @@ export default NextAuth({
             ),
             q.Create(
               q.Collection('users'),
-              {data: {email}}
+              {data: { email }}
             ),
             q.Get(
               q.Match(
-                q.Collection('users'),
-                {data: {email}}
-                )
+                q.Index('user_by_email'),
+                q.Casefold(user.email)
               )
             )
           )
+        )
           
         return true
       } catch {
@@ -48,4 +48,4 @@ export default NextAuth({
 
     }
   }
-})
+})  
