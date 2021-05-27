@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { signIn, useSession } from 'next-auth/client'
 import { mocked } from 'ts-jest/utils'
 import { useRouter } from 'next/router'
+
 import { SubscribeButton } from '.'
 
 jest.mock('next-auth/client')
@@ -50,7 +51,7 @@ describe('SubscribeButton component', () => {
         },
         activeSubscription: 'fake-active-subscription', 
         expires: 'fake-expires' 
-      }, 
+      } as any, 
       false
     ])
 
